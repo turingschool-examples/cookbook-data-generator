@@ -1,0 +1,22 @@
+{
+  "name": "cookbook-data-generator",
+  "version": "1.0.0",
+  "description": "Data generator for the Turing FE2 CookBook project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/turingschool-examples/cookbook-data-generator.git"
+  },
+  "author": "Khalid Williams",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/turingschool-examples/cookbook-data-generator/issues"
+  },
+  "homepage": "https://github.com/turingschool-examples/cookbook-data-generator#readme",
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  }
+}
