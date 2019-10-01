@@ -3,4 +3,6 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-getData('https://api.spoonacular.com/recipes/random');
+console.log(process.env.KEY)
+
+getData(`https://api.spoonacular.com`,`/recipes/random`, `number=5`);
