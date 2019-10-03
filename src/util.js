@@ -5,13 +5,11 @@ dotenv.config();
 
 module.exports = function getData(baseURL, path, query) {
   const fullUrl = `${baseURL}${path}?apiKey=${process.env.KEY}&${query}`
-  fetch(fullUrl, {
+  const promise = fetch(fullUrl, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
     },
-  })
-    .then(data => data.json())
-    .then(data => console.log(data))
-    .catch(err => console.log(err));
+  });
+  return promise;
 }
