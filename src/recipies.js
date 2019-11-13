@@ -23,11 +23,13 @@ recipe data structure:
 
 
 // must be async
-let recipies = getData(`https://api.spoonacular.com`, `/recipes/random`, `number=100`);
+let recipies = getData("https://api.spoonacular.com", "/recipes/random", "number=100");
   console.log(recipies)
 recipies.then(data => data.json())
   .then(json => {
-    let stringifiedJson = JSON.stringify(json);
+    //let parsedJson = JSON.parse(stringifiedJson);
+    let cleanedJson = cleanRecipes(json);
+    let stringifiedJson = JSON.stringify(cleanedJson);
     fs.writeFile(__dirname + '/../output/recipie-data.js', stringifiedJson, (err) => {
       if (err) {
         console.log(err)
@@ -37,3 +39,37 @@ recipies.then(data => data.json())
     })
   })
   .catch(err => console.log(err));
+
+
+function cleanRecipes(dirtyRecipes) {
+//  console.log(dirtyRecipes[0]);
+//  console.log(dirtyRecipes.recipes);
+  let recipes = dirtyRecipes.recipes;
+  let cleanedRecipes = recipes.map(recipe => {
+    let cleanRecipe = {
+      name: recipe.title,
+      ingredients: [],
+      instructions: [],
+      tags: recipe.dishTypes
+    };
+    
+    cleanRecipe.ingredients = recipe.extendedIngredients.map( ingredient => {
+      return {
+        name: ingredient.name,
+        id: ingredient.id,
+        quanitity: {
+	  amount: ingredient.amount,
+	  unit: ingredient.unit,
+	},
+      }
+    });
+//    console.log(recipe.analyzedInstructions);
+    cleanRecipe.instructions = recipe.analyzedInstructions[0].steps.map(step => {
+      return {
+        number: step.number,
+	instruction: step.step
+      }})
+   return cleanRecipe;
+  })
+  return cleanedRecipes;
+}
