@@ -1,4 +1,4 @@
-[
+const allRecipes = [
     {
         "ingredients": [
             {
@@ -12020,3 +12020,7 @@
         ]
     }
 ]
+
+module.exports = {
+  allRecipes
+}
