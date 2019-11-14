@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 module.exports = function getData(baseURL, path, query) {
-  const fullUrl = `${baseURL}${path}?apiKey=${process.env.KEY}&${query}`
+  query? const fullUrl = `${baseURL}${path}?apiKey=${process.env.KEY}&${query} : `const fullUrl = `${baseURL}${path}?apiKey=${process.env.KEY}`
   const promise = fetch(fullUrl, {
     method: 'GET',
     headers: {
