@@ -1,6 +1,6 @@
 const getData = require('./util');
 const fs = require('fs');
-
+let cleanedJson;
 /*
 recipe data structure:
 [
@@ -23,12 +23,12 @@ recipe data structure:
 
 
 // must be async
-let recipies = getData("https://api.spoonacular.com", "/recipes/random", "number=100");
+let recipies = getData("https://api.spoonacular.com", "/recipes/random", "number=50");
   console.log(recipies)
 recipies.then(data => data.json())
   .then(json => {
     //let parsedJson = JSON.parse(stringifiedJson);
-    let cleanedJson = cleanRecipes(json);
+    cleanedJson = cleanRecipes(json);
     let stringifiedJson = JSON.stringify(cleanedJson);
     fs.writeFile(__dirname + '/../output/recipie-data.js', stringifiedJson, (err) => {
       if (err) {
@@ -73,3 +73,6 @@ function cleanRecipes(dirtyRecipes) {
   })
   return cleanedRecipes;
 }
+
+module.exports = cleanedJson;
+// Now my order of execution seems to be messed up, I think I need to consolidate the workflow into one file to do everything at once
