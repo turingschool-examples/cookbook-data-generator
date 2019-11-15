@@ -1,5 +1,5 @@
-const fetch = require('node-fetch');
-const dotenv = require('dotenv');
+import fetch from 'node-fetch';
+import dotenv from 'dotenv';
 
 dotenv.config();
 
@@ -56,7 +56,7 @@ function cleanRecipes(dirtyRecipes) {
   return cleanedRecipes;
 }
 
-module.exports = {
+export {
   getData,
   cleanIngredient,
   cleanRecipes
