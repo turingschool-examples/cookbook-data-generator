@@ -45,7 +45,7 @@ function cleanRecipes(dirtyRecipes) {
 	},
       }
     });
-//    console.log(recipe.analyzedInstructions);
+    //console.log(recipe.analyzedInstructions);
     cleanRecipe.instructions = recipe.analyzedInstructions[0].steps.map(step => {
       return {
         number: step.number,
@@ -56,8 +56,20 @@ function cleanRecipes(dirtyRecipes) {
   return cleanedRecipes;
 }
 
+function getIdsForAllIngredients(allRecipes) {
+  let totalIngredientIds = allRecipes.reduce((idList, recipe) => {
+    recipe.ingredients.forEach(ingredient => {
+      if (!idList.includes(ingredient)) {
+        idList.push(ingredient.id);
+      }
+    });
+    return idList;
+  }, []);
+  return totalIngredientIds;  
+}
 export {
   getData,
   cleanIngredient,
-  cleanRecipes
+  cleanRecipes,
+  getIdsForAllIngredients
 }
