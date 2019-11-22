@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node --experimental-modules index.js",
-    "clean": "node --experimental-modules cleanGeneratedData.js"
+    "makeUsers": "node --experimental-modules src/users.js"
   },
   "repository": {
     "type": "git",
