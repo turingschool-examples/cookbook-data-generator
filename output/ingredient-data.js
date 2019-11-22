@@ -1,4 +1,4 @@
-export default let allIngredientInfo = [
+export default let allingredientinfo = [
     {
         "estimatedCostInCents": 467,
         "id": 11962,

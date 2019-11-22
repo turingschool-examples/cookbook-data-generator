@@ -20,6 +20,7 @@
   "homepage": "https://github.com/turingschool-examples/cookbook-data-generator#readme",
   "dependencies": {
     "dotenv": "^8.1.0",
+    "faker": "^4.1.0",
     "node-fetch": "^2.6.0"
   },
   "type": "module"
