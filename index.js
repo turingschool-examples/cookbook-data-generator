@@ -46,8 +46,7 @@ function handleIngredients(recipes) {
   })
   .then(data => {
         // Do we need to clean all the data here?
-    let cleanedIngredients = cleanIngredients(data);
-    console.log(data)
+    let cleanedIngredients = data.map(ingredient => cleanIngredient(ingredient));
     let stringifiedData = JSON.stringify(cleanedIngredients);
     stringifiedData = 'export default let allIngredientInfo = ' + stringifiedData;
     fs.writeFile(__dirname + "/output/ingredient-data.js", stringifiedData, (err) => {

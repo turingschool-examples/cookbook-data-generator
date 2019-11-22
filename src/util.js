@@ -16,10 +16,12 @@ function getData(baseURL, path, query) {
 }
 
 function cleanIngredient(ingredient) {
+  console.log(ingredient);
+  let costInCents = Math.floor(Math.random() * Math.floor(1000)) + 50;
   return {
     id: ingredient.id,
     name: ingredient.name,
-    estimatedCost: ingredient.estimatedCost
+    estimatedCostInCents: costInCents
   }
 }
 
