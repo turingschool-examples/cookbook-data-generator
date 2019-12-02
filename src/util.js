@@ -26,33 +26,36 @@ function cleanIngredient(ingredient) {
 }
 
 function cleanRecipes(dirtyRecipes) {
- // This may no longer work the way I had originally intended. May need to refactor if pulling all interaction into index.js 
-	
+ // This may no longer work the way I had originally intended. May need to refactor if pulling all interaction into index.js
+
   let recipes = dirtyRecipes.recipes;
   let cleanedRecipes = recipes.map(recipe => {
     let cleanRecipe = {
       name: recipe.title,
+      id: recipe.id,
+      image: recipe.image,
       ingredients: [],
       instructions: [],
       tags: recipe.dishTypes
     };
-    
+
     cleanRecipe.ingredients = recipe.extendedIngredients.map( ingredient => {
       return {
         name: ingredient.name,
         id: ingredient.id,
         quanitity: {
-	  amount: ingredient.amount,
-	  unit: ingredient.unit,
-	},
+	        amount: ingredient.amount,
+	        unit: ingredient.unit,
+	      },
       }
     });
     //console.log(recipe.analyzedInstructions);
     cleanRecipe.instructions = recipe.analyzedInstructions[0].steps.map(step => {
       return {
         number: step.number,
-	instruction: step.step
-      }})
+	      instruction: step.step
+      }
+    })
    return cleanRecipe;
   })
   return cleanedRecipes;
@@ -67,7 +70,7 @@ function getIdsForAllIngredients(allRecipes) {
     });
     return idList;
   }, []);
-  return totalIngredientIds;  
+  return totalIngredientIds;
 }
 export {
   getData,
